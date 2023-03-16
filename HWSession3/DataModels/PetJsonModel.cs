@@ -3,14 +3,18 @@
  * Marilou A. Ranoy
  * 
  * Homework 3
- * RestAPI Test using RestSharp and MSTest
- * Base URL: https://petstore.swagger.io/#/
- * Endpoint: /pet
- * Create a test using POST request to add a new pet to the store
- * Request Payload should contain pet name, category, photo URLS, tags, and status
- * Add an Assertion for HTTP Status Code
- * Add an Assertion if pet name, category, photo URLS, tags, and status are correctly reflected
- * Create a cleanup method using DELETE request 
+ * RestApi Test using RestSharp and MSTest
+ * Base URL: https://petstore.swagger.io/v2
+ * Endpoint: /pet/{petId}
+ * Create a test using GET request to pull up a pet of your choice {by ID} from the endpoint provided while making use of the following
+ *  Façade Pattern
+ *  AAA Pattern
+ *  Object Assertion
+ * Validate following Pet details
+ *  Name
+ *  PhotoUrls
+ *  Tags
+ *  Status
  * 
 */
 
@@ -18,8 +22,10 @@ using Newtonsoft.Json;
 
 namespace HWSession3
 {
-    //Class that defines our Pet model
-    public partial class PetModel
+    /// <summary>
+    /// Class that defines our Pet model
+    /// </summary>
+    public partial class PetJsonModel
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -40,7 +46,9 @@ namespace HWSession3
         public string Status { get; set; }
     }
 
-    //Class that defines our Category model
+    /// <summary>
+    /// Class that defines our Category model
+    /// </summary>
     public partial class Category
     {
         [JsonProperty("id")]
